@@ -104,8 +104,8 @@ pre_dat_A4 %>%
 # Exercise 2: Heckman Selection Model
 #=================================================================
 #### Question 1 ####
-# I regard age, work_exp, and the total years of schooling of individual
-# as regressors in the OLS regression.
+# I regard age, work_exp, the total years of schooling of individual, 
+# and gender as regressors in the OLS regression.
 pre_dat_A4$KEY_SEX_1997 <- factor(pre_dat_A4$KEY_SEX_1997,labels=c("Male","Female"))
 
 dat_Ex2 <- pre_dat_A4 %>%
@@ -128,7 +128,7 @@ summary(OLS_obs)
 #### Question 3 ####
 # I use the total years of schooling of individual's resident father and mother
 # and the total years of schooling of individual's biological father and mother
-# as exogenous variables to make probit regression.
+# as exogenous variables, as well as the number of children, to make probit regression.
 heckman_select <- function(Y, X, Z, obs, par) {
   alpha = par[1:10]
   probit = X%*%alpha
